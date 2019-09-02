@@ -70,7 +70,6 @@ class SocialiteProvider extends AbstractProvider
         }
 
         $response = $this->getAccessTokenResponse($this->getCode());
-        info('user', compact('response'));
         $user = $this->mapUserToObject($response);
 
         return $user->setToken(Arr::get($response, 'access_token'))
@@ -100,11 +99,10 @@ class SocialiteProvider extends AbstractProvider
      */
     protected function mapUserToObject(array $user)
     {
-        info('map', $user);
         return (new User())->setRaw($user)->map([
-            'id' => $user['id_token_payload']['sub'],
-            'name' => Arr::get($user, 'name'),
-            'email' => Arr::get($user, 'email'),
+            'id' => Arr::get($user, 'id_token_payload.sub'),
+            'name' => Arr::get($user, 'id_token_payload.name'),
+            'email' => Arr::get($user, 'id_token_payload.email'),
         ]);
     }
 
@@ -115,7 +113,6 @@ class SocialiteProvider extends AbstractProvider
     {
         return array_merge(parent::getTokenFields($code), [
             'grant_type' => 'authorization_code',
-            'response_mode' => 'form_post',
         ]);
     }
 }
