@@ -1,0 +1,34 @@
+{
+    "name": "setemares/apple-socialite",
+    "description": "Apple OAuth2 Provider for Laravel Socialite",
+    "keywords": [
+        "laravel",
+        "socialite",
+        "oauth",
+        "oauth2",
+        "apple"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SeteMares",
+            "email": "dev@setemares.co"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "laravel/socialite": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SeteMares\\Apple\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SeteMares\\Apple\\ServiceProvider"
+            ]
+        }
+    }
+}
