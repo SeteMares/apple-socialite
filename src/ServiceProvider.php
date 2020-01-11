@@ -10,11 +10,14 @@ use Socialite;
 class ServiceProvider extends SocialiteServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * Determine if the provider is deferred.
      *
-     * @var bool
+     * @return bool
      */
-    protected $defer = false;
+    public function isDeferred()
+    {
+        return false;
+    }
 
     /**
      * Bootstrap the service provider.
